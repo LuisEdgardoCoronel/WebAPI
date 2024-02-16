@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -50,6 +50,8 @@ namespace WebAPI.Controllers
             Listforecasts.Add(weatherForecast);
             return Ok();
         }
+
+
 
         [HttpDelete("{index}")]
         public IActionResult Delete(int index)
