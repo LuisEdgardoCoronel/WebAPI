@@ -19,9 +19,9 @@ namespace WebAPI.Controllers
         {
             _logger = logger;
 
-            if(Listforecasts == null || Listforecasts.Any())
+            if(Listforecasts == null || !Listforecasts.Any())
             {
-                Enumerable.Range(1, 5).Select(index => new WeatherForecast
+                Listforecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
                 {
                     Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                     TemperatureC = Random.Shared.Next(-20, 55),
@@ -45,5 +45,17 @@ namespace WebAPI.Controllers
 
 
         [HttpPost]
+        public IActionResult Post(WeatherForecast weatherForecast)
+        {
+            Listforecasts.Add(weatherForecast);
+            return Ok();
+        }
+
+        [HttpDelete("{index}")]
+        public IActionResult Delete(int index)
+        {
+            Listforecasts.RemoveAt(index);
+            return Ok();
+        }
     }
 }
