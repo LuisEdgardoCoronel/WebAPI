@@ -12,6 +12,10 @@ builder.Services.AddSwaggerGen();
 
 //inyeccion de dependencias:
 //builder.Services.AddScoped<IFirstService, FirstService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ITaskService, TaskService>();
+
+
 //inyectando la clase:
 //builder.Services.AddScoped<IFirstService>(p=> new FirstService());
 
