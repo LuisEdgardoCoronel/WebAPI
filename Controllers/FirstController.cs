@@ -13,7 +13,7 @@ namespace WebAPI.Controllers
         {
             this.firstService = firstService;
         }
-
+        [HttpGet(Name = "GetFirst")]
         public IActionResult Get()
         {
             return Ok(firstService.GetFirst());
