@@ -1,3 +1,4 @@
+using PracticaEf;
 using WebAPI.Middleware;
 using WebAPI.Service;
 
@@ -10,14 +11,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//configuracion ef
+builder.Services.AddSqlServer<TaskContext>(builder.Configuration.GetConnectionString("conectiondb"));
+
 //inyeccion de dependencias:
-//builder.Services.AddScoped<IFirstService, FirstService>();
+builder.Services.AddScoped<IFirstService, FirstService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ITaskService, TaskService>();
 
-
 //inyectando la clase:
 //builder.Services.AddScoped<IFirstService>(p=> new FirstService());
+
 
 var app = builder.Build();
 
