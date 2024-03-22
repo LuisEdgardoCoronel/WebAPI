@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PracticaEf;
 using WebAPI.Service;
 
 namespace WebAPI.Controllers
@@ -9,14 +10,25 @@ namespace WebAPI.Controllers
     {
         IFirstService firstService;
 
-        public FirstController(IFirstService firstService)
+        TaskContext dbcontext;
+        public FirstController(IFirstService firstService, TaskContext context)
         {
             this.firstService = firstService;
+            dbcontext = context;
         }
-        [HttpGet(Name = "GetFirst")]
+
+        [HttpGet]
         public IActionResult Get()
         {
             return Ok(firstService.GetFirst());
+        }
+
+        [HttpGet]
+        [Route("createdb")]
+        public IActionResult CreateDatabase()
+        {
+            dbcontext.Database.EnsureCreated();
+            return Ok();
         }
     }
 }
