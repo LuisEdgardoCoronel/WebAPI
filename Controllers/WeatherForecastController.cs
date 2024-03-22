@@ -35,7 +35,7 @@ namespace WebAPI.Controllers
 
 
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
            _logger.LogInformation("Retornando la lista de weatherforecast");
