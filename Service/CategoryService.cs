@@ -19,7 +19,7 @@ namespace WebAPI.Service
 
         public async Task Save(Category category)
         {
-            context.Categories.Add(category);
+            context.Add(category);
             await context.SaveChangesAsync();
         }
 

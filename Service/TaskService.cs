@@ -18,7 +18,7 @@ namespace WebAPI.Service
 
         public async Task Save(TaskModel task)
         {
-            context.Tasks.Add(task);
+            context.Add(task);
             await context.SaveChangesAsync();
         }
 
